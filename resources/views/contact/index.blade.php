@@ -15,7 +15,7 @@
                     <th>User Email</th>
                     <th>User Phone</th>
                     <th class="text-center">Record Date</th>
-                    <th class="text-center">Action</th>
+                    <th class="text-center" align="center" colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +30,19 @@
                     <td align="center">{{$contact->created_at}}</td>
                     <td align="center">
                         <a href="/{{$contact->id}}/edit" class="text-primary"><i class="fa fa-fw fa-edit"></i> Edit</a> |
-                        <a href="/delete/{{$contact->id}}" class="text-danger" onclick="return confirm('Are you sure to delete this user?');"><i class="fa fa-fw fa-trash"></i> Delete</a>
-                    </td>
+                        {{-- <a href="delete/{{$contact->id}}" class="text-danger" onclick="return confirm('Are you sure to delete this user?');"><i class="fa fa-fw fa-trash"></i> Delete</a>
+                        @csrf
+                        @method('delete') --}}
+                   
+                    <td>
+                        <form action="delete/{{$contact->id}}" method="POST">
+                            @csrf
+                            @method('delete')
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-btn fa-trash"></i>Delete
+                                </button>
+                            </form>
+                        </td>
 
                 </tr>
                 @endforeach

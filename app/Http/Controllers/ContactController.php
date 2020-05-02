@@ -55,11 +55,10 @@ class ContactController extends Controller
         return redirect('/contact');
    }
 
-   public function destroy(Contact $contact){
-    
-  //  $con=Contact::find($id);
-   // $con->delete();
-      $contact->id->$delete();
+   public function destory($id){
+    $task = Contact::find($id);
+    $task->delete();
     return redirect()->back();
 }
+
 }
